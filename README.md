@@ -1,41 +1,43 @@
-# Vue3 Quasar App (vue3-firebase-app)
+2023. 11. 15 ~
 
-Vue3 Quasar Firebase TypeScript Lecture
+# Day 2
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
+## unplugin-vue-router
+
+1. 먼저 플러그인을 활성화 한다.
+
+```js
+// quasar.config.js | vite.config.ts
+// ...
+  vitePlugins: [
+    [
+      'unplugin-vue-router/vite',
+    ],
+  ],
+// ...
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
+2. 라우트 세팅을 설정한다.
+
+```js
+// src/router/index.js
+// ...
+import {
+  createRouter,
+  createMemoryHistory,
+  createWebHistory,
+  createWebHashHistory,
+} from 'vue-router/auto';
+// auto 추가
+// import routes from './routes' // 제거
+
+// ...
+const Router = createRouter({
+  // ...
+  // routes, // 제거
+  // ...
+});
+
+return Router;
+// ...
 ```
-
-
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
