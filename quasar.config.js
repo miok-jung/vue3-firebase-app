@@ -53,7 +53,7 @@ module.exports = configure(function (/* ctx */) {
         node: 'node16',
       },
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -76,13 +76,21 @@ module.exports = configure(function (/* ctx */) {
         [
           'unplugin-vue-router/vite',
           {
+            // Folder(s) to scan for vue components and generate routes. Can be a string, or
+            // an object, or an array of those. Each option allows to override global options.
+            // like exclude, extensions, etc.
             routesFolder: [
               { src: 'src/pages' },
               { src: 'src/docs', path: 'docs/' },
             ],
+            // list of glob files to exclude from the routes generation
+            // e.g. ['**/__*'] will exclude all files and folders starting with `__`
+            // e.g. ['**/__*/**/*'] will exclude all files within folders starting with `__`
+            // e.g. ['**/*.component.vue'] will exclude components ending with `.component.vue`
             exclude: ['**/components/**'],
           },
         ],
+        ['vite-plugin-vue-layouts', {}],
       ],
     },
 
